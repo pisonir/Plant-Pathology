@@ -17,8 +17,8 @@ def get_dataloaders(
     This function returns the train, val and test dataloaders.
     """
     # create the datasets
-    train_ds = MyDataset(project.base_dir / 'train.csv', project.dataset_dir / 'train', transform=train_transform)
-    test_ds = MyDataset(project.base_dir / 'sample_submission.csv', project.dataset_dir / 'test', transform=test_transform)
+    train_ds = MyDataset(project.base_dir / 'train.csv', train_dir, transform=train_transform)
+    test_ds = MyDataset(project.base_dir / 'sample_submission.csv', test_dir, transform=test_transform)
     # now we want to split the train_ds in validation and train
     lengths = np.array(split) * len(train_ds)
     lengths = lengths.astype(int)
