@@ -25,11 +25,12 @@ class MyDataset(Dataset):
         image = cv2.imread(img_src, cv2.IMREAD_COLOR)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         labels = self.img_df.iloc[idx, 1:].values
-        labels = torch.from_numpy(labels.astype(np.int8))
-        labels = labels.unsqueeze(-1)
+        labels_idx = np.argmax(labels)
+        labels_idx = torch.tensor(labels_idx, dtype=torch.int64)
+
         if self.transform:
             image = self.transform(F.to_pil_image(image))
 
-        return image, labels
+        return image, labels_idx
 
 

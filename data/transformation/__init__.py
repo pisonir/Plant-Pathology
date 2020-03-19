@@ -26,8 +26,8 @@ class ImgAugTransform:
                               translate_percent={"x": (-0.2, 0.2), "y": (-0.2, 0.2)},
                               rotate=(-25, 25),
                               shear=(-8, 8)
-                          ))
-            # iaa.AddToHueAndSaturation(value=(-10, 10), per_channel=True)
+                          )),
+            iaa.AddToHueAndSaturation(value=(-10, 10), per_channel=True)
         ])
 
     def __call__(self, img):

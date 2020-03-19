@@ -1,5 +1,5 @@
 import torch.nn as nn
-from torchvision.models import resnet18
+from torchvision.models import resnet18, resnet50
 from functools import partial
 
 
@@ -11,8 +11,8 @@ def resnet_finetune(model, n_classes):
     """
     for param in model.parameters():
         param.requires_grad = False
-    model.fc = nn.Linear(512, n_classes)
+    model.fc = nn.Linear(2048, n_classes)
     return model
 
 # replace the resnet18 function
-resnet18 = partial(resnet_finetune, resnet18(pretrained=True))
+resnet50 = partial(resnet_finetune, resnet50(pretrained=True))
