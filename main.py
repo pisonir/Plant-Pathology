@@ -38,8 +38,8 @@ if __name__ == '__main__':
     show_dl(train_dl)
     show_dl(test_dl)
     # define our comet experiment
-    experiment = Experiment(api_key="???",
-                            project_name="???", workspace="???")
+    experiment = Experiment(api_key="api_key",
+                            project_name="project_name", workspace="workspace_name")
     experiment.log_parameters(params)
     # create our special resnet18
     cnn = resnet18(n_classes=4).to(device)
